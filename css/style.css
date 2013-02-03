@@ -43,7 +43,7 @@ h3.right {
     line-height: 20px;
 }
 #loader {
-    background: url(img/loader.gif) no-repeat center center;
+    background: url(../img/loader.gif) no-repeat center center;
 
     position: absolute;
     left: 50%;
