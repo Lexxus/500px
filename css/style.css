@@ -62,7 +62,7 @@ h3.right {
 
 }
 #details:after {
-    content: ' В»';
+    content: ' »';
 }
 .clear {
     clear: both;
