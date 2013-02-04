@@ -1,8 +1,9 @@
 #desk {
     float: left;
     margin-right: 15px;
+	margin-bottom: 10px;
     width: 900px;
-    min-height: 600px;
+    min-height: 500px;
     position: relative;
     cursor: pointer;
 }
