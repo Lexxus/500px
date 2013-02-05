@@ -150,7 +150,6 @@
 		timeoutId = setTimeout(function(){
 			getPhoto();
 		}, timeout != undefined ? timeout : 1000 * doc.el('photoDuration').value);
-		console.log(timeoutId +': '+ (timeout != undefined ? timeout : 1000 * doc.el('photoDuration').value));
 	};
 
 	function getPhoto(toCache){
