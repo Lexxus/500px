@@ -98,7 +98,7 @@
 
 		var btnUpdate = doc.el('btnUpdate'),
 			btnPlay = doc.el('btnPlay'),
-			BTN_PLAY_TEXT = btnPlay.innerText;
+			BTN_PLAY_TEXT = btnPlay.textContent;
 
 		ui = {
 			img0: doc.el('photo1'),
@@ -131,8 +131,8 @@
 			if(!timeoutId) getPhoto();
 		}
 		btnPlay.onclick = function(){
-			if(this.innerText == BTN_PLAY_TEXT){
-				this.innerText = 'Stop';
+			if(this.textContent == BTN_PLAY_TEXT){
+				this.textContent = 'Stop';
 				btnUpdate.disabled = true;
 
 				//getPhoto();
@@ -141,7 +141,7 @@
 				clearTimeout(timeoutId);
 				timeoutId = null;
 				btnUpdate.disabled = false;
-				this.innerText = BTN_PLAY_TEXT;
+				this.textContent = BTN_PLAY_TEXT;
 			}
 		};
 	};
