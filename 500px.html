@@ -2,79 +2,9 @@
 <html>
 <head>
 	<meta charset="utf-8"/>
-	<title>500px Random Photo</title>
+	<title>500px Photo Gallery</title>
 	<link href="css/foundation.min.css" rel="stylesheet" type="text/css"/>
-	<style>
-		#desk {
-			float: left;
-			margin-right: 15px;
-			width: 900px;
-            min-height: 600px;
-            position: relative;
-			cursor: pointer;
-		}
-		#desk .img {
-            position: absolute;
-            left: 0;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            opacity: 1;
-            background: white;
-
-			-webkit-transition: opacity 1s;
-			-moz-transition: opacity 1s;
-			-ms-transition: opacity 1s;
-			-o-transition: opacity 1s;
-			transition: opacity 1s;
-		}
-		.control {
-			/*white-space: nowrap;*/
-		}
-		.duration {
-			position: relative;
-			top: 2px;
-		}
-		#photoDuration {
-			width: 30px;
-			display: inline-block;
-			height: 28px;
-			text-align: right;
-		}
-		.right {
-			float: right;
-			margin-right: 15px;
-		}
-		h3.right {
-			margin-top: 0;
-			line-height: 20px;
-		}
-		#loader {
-			background: url(img/loader.gif) no-repeat center center;
-
-			position: absolute;
-			left: 50%;
-			top: 50%;
-			margin: -32px auto auto -32px;
-			width: 64px;
-			height: 64px;
-			opacity: .5;
-			z-index: 100;
-			display: none;
-		}
-		#photoOwner {
-			color: #888;
-		}
-		#photoCategory {
-
-		}
-		#details:after {
-			content: ' »';
-		}
-		.clear {
-			clear: both;
-		}
-	</style>
+	<link href="css/main.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 	<nav class="top-bar" style="margin-bottom: 5px;">
@@ -111,9 +41,11 @@
         <div class="img"><img id="photo2" src=""/></div>
 		<div id="loader"></div>
 	</div>
+
+	<div id="thumbsBar"></div>
 	
 	<div class="control">
-		<button id="btnUpdate" type="button" class="small button">Next</button>
+		<button id="btnNext" type="button" class="small button">Next</button>
 		<button id="btnPlay" type="button" class="small button">Slideshow</button>
 		<span class="duration">
 			<input id="photoDuration" type="text" value="5"/>s
@@ -129,7 +61,6 @@
 	<p id="photoDescr"></p>
 
 	<script src="js/500px.js"></script>
-	<script src="js/xdoc.js"></script>
-	<script src="js/main.js"></script>
+	<script src="js/app.js"></script>
 </body>
 </html>
