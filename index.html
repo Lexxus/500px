@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8"/>
-	<title>500px Random Photo</title>
+	<title>500px Photo Gallery</title>
 	<link href="css/foundation.min.css" rel="stylesheet" type="text/css"/>
 	<link href="css/style.css" rel="stylesheet" type="text/css"/>
 </head>
@@ -42,12 +42,15 @@
 	<div id="loader"></div>
 </div>
 
+<div id="thumbsBar"></div>
+
 <div class="control">
-	<button id="btnUpdate" type="button" class="small button">Next</button>
+	<button id="btnPrev" type="button" class="small button">Prev.</button>
+	<button id="btnNext" type="button" class="small button">Next</button>
 	<button id="btnPlay" type="button" class="small button">Slideshow</button>
-		<span class="duration">
-			<input id="photoDuration" type="text" value="5"/>s
-		</span>
+	<span class="duration">
+		<input id="showDuration" type="text" value="5"/>s
+	</span>
 </div>
 
 <h2 id="photoName"></h2>
@@ -59,8 +62,7 @@
 <p id="photoDescr"></p>
 
 <script src="js/500px.js"></script>
-<script src="js/xdoc.js"></script>
-<script src="js/main.js"></script>
+<script src="js/app.js"></script>
 
 <!-- AddThis Button BEGIN -->
 <div class="addthis_toolbox addthis_default_style clear">
