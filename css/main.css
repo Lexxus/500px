@@ -22,20 +22,22 @@
 	-o-transition: opacity 1s;
 	transition: opacity 1s;
 }
-#thumbs-bar {
+#thumbsBar {
 	height: 117px;
 	overflow-x: auto;
 	overflow-y: hidden;
 	white-space: nowrap;
 }
-#thumbs-bar img {
-	width: 100px;
-	height: 100px;
+#thumbsBar img {
+	max-width: 100px;
+	max-height: 100px;
+}
+#thumbsBar a {
 	margin-left: 5px;
 	opacity: .5;
 	cursor: pointer;
 }
-#thumbs-bar img.active, #thumbs-bar img:hover {
+#thumbsBar a.active, #thumbsBar a:hover {
 	opacity: 1;
 }
 .control {
@@ -45,7 +47,7 @@
 	position: relative;
 	top: 2px;
 }
-#photoDuration {
+#showDuration {
 	width: 30px;
 	display: inline-block;
 	height: 28px;
