@@ -53,18 +53,18 @@
 
 	// Observer
 	var Ob = {
-		on: function(obj, eventName, handler, scope) {
-			if(typeof obj !== "object" || typeof eventName !== "string" || typeof handler !== "function") return false;
-			if(!obj._events) obj._events = {};
-			if(!obj._events[eventName]) obj._events[eventName] = [];
-			obj._events[eventName].push({
+		on: function(eventName, handler, scope) {
+			if(typeof eventName !== "string" || typeof handler !== "function") return false;
+			if(!this._events) this._events = {};
+			if(!this._events[eventName]) this._events[eventName] = [];
+			this._events[eventName].push({
 				handler: handler,
 				scope: scope
 			});
 		},
 
-		fireEvent: function(obj, eventName, params) {
-			var listeners = obj._events[eventName];
+		fireEvent: function(eventName, params) {
+			var listeners = this._events[eventName];
 			if(listeners) {
 				// make it asynchronious
 				setTimeout(function(){
@@ -77,13 +77,22 @@
 	};
 
 	var Mediator = {
-		start: function(Ob) {
-			Ob.on(Facade, 'next', Loader.getNextPhoto, Loader);
-			Ob.on(Loader, 'photo', Facade.showPhoto, Facade);
-			Facade.init();
-			Facade.getNextPhoto();
+		start: function(facade, loader) {
+			facade.on('next', loader.getNextPhoto, loader);
+			loader.on('photo', facade.showPhoto, facade);
+			facade.init();
+			facade.getNextPhoto();
 		}
 	};
+
+	var Observable = function(obj) {
+		for(p in obj) {
+			if(obj.hasOwnProperty(p)) {
+				this[p] = obj[p];
+			}
+		}
+	};
+	Observable.prototype = Ob;
 
 	var Facade = {
 		// cached DOM elements
@@ -284,7 +293,7 @@
 				}
 			}
 			if(!this.toCache) ui.show(this.ePhotoLoader);
-			Ob.fireEvent(this, 'next', {feature: this.feature, category: this.category});
+			this.fireEvent('next', {feature: this.feature, category: this.category});
 		},
 
 		showPhoto: function(photo) {
@@ -442,7 +451,7 @@
 			if(cache){
 				if(cache.cursor < cache.photos.length){
 					// console.log("Load photo from cache:", cache.cursor);
-					Ob.fireEvent(me, 'photo', cache.photos[cache.cursor++]);
+					me.fireEvent('photo', cache.photos[cache.cursor++]);
 					return;
 				}else{
 					cache.page++;
@@ -467,7 +476,7 @@
 				if(err) alert(err);
 				else {
 					// console.log("Load photo:", cache.cursor);
-					Ob.fireEvent(me, 'photo', cache.photos[cache.cursor++]);
+					me.fireEvent('photo', cache.photos[cache.cursor++]);
 				}
 			});
 		},
@@ -495,6 +504,9 @@
 	};
 
 	window.onload = function() {
-		Mediator.start(Ob);
+		var facade = new Observable(Facade),
+			loader = new Observable(Loader);
+
+		Mediator.start(facade, loader);
 	};
 })();
