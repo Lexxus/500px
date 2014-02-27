@@ -270,7 +270,8 @@
 				});
 				this.eThumbsBar.innerHTML = html;
 				if(lastPhotoUrl) {
-					ui.on('click', this.eThumbsBar.children, this.onThumbClick);
+					var me = this;
+					ui.on('click', this.eThumbsBar.children, this.onThumbClick.bind(this));
 
 					if(this.isTransition) {
 						this.backImg.src = lastPhotoUrl;
@@ -394,12 +395,13 @@
 
 			var tb = this.eThumbsBar;
 			tb.appendChild(a);
-			ui.on('click', a, this.onThumbClick);
+			ui.on('click', a, this.onThumbClick.bind(this));
 			tb.scrollLeft = tb.scrollWidth - tb.clientWidth;
 		},
 
 		onThumbClick: function(e) {
-			Facade.showByIndex(parseInt(this.href.split('#')[1]));
+			var a = e.target.parentNode;
+			this.showByIndex(parseInt(a.href.split('#')[1]));
 			e.preventDefault();
 		},
 
